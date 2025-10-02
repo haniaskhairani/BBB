@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baked Bliss Bianca - Cerita</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #f5f0e8 0%, #ede4d3 100%);
+            color: #4a4035;
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(139, 115, 85, 0.1);
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #8b7355;
+            margin-bottom: 15px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #a0826d;
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .chapter-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .chapter-btn {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #c4a57b;
+            border-radius: 30px;
+            color: #8b7355;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        .chapter-btn:hover {
+            background: #c4a57b;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(196, 165, 123, 0.3);
+        }
+
+        .chapter-btn.active {
+            background: #8b7355;
+            color: white;
+            border-color: #8b7355;
+        }
+
+        .chapter-content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(139, 115, 85, 0.15);
+            margin-bottom: 40px;
+        }
+
+        .chapter-title {
+            font-size: 2.2em;
+            color: #8b7355;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 400;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e8d5c4;
+        }
+
+        .chapter-text {
+            font-size: 1.1em;
+            text-align: justify;
+            text-indent: 40px;
+            margin-bottom: 20px;
+            color: #5a4a3a;
+        }
+
+        .chapter-text:first-of-type::first-letter {
+            font-size: 3.5em;
+            float: left;
+            line-height: 0.9;
+            margin: 5px 10px 0 0;
+            color: #8b7355;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #a0826d;
+            font-style: italic;
+        }
+
+        .navigation-arrows {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            padding: 0 20px;
+        }
+
+        .nav-arrow {
+            padding: 15px 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #c4a57b;
+            border-radius: 30px;
+            color: #8b7355;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1em;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .nav-arrow:hover {
+            background: #c4a57b;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-arrow.prev:hover {
+            transform: translateX(-5px);
+        }
+
+        .nav-arrow:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .chapter-content {
+                padding: 30px 20px;
+            }
+
+            .chapter-title {
+                font-size: 1.6em;
+            }
+
+            .chapter-text {
+                font-size: 1em;
+                text-indent: 25px;
+            }
+
+            .nav-arrow {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Baked Bliss Bianca</h1>
+            <p class="subtitle">Sebuah cerita tentang bangkit, harapan, dan cinta yang datang di saat tak terduga</p>
+        </header>
+
+        <div class="chapter-nav">
+            <button class="chapter-btn active" onclick="showChapter(1)">BAB 1</button>
+            <button class="chapter-btn" onclick="showChapter(2)">BAB 2</button>
+            <button class="chapter-btn" onclick="showChapter(3)">BAB 3</button>
+            <button class="chapter-btn" onclick="showChapter(4)">BAB 4</button>
+            <button class="chapter-btn" onclick="showChapter(5)">BAB 5</button>
+            <button class="chapter-btn" onclick="showChapter(6)">BAB 6</button>
+            <button class="chapter-btn" onclick="showChapter(7)">BAB 7</button>
+            <button class="chapter-btn" onclick="showChapter(8)">BAB 8</button>
+            <button class="chapter-btn" onclick="showChapter(9)">BAB 9</button>
+            <button class="chapter-btn" onclick="showChapter(10)">BAB 10</button>
+        </div>
+
+        <!-- BAB 1 -->
+        <div id="chapter-1" class="chapter-content">
+            <h2 class="chapter-title">BAB 1 – Dimulai dari Sini</h2>
+            
+            <p class="chapter-text">Perempuan itu berdiri di jendela sambil memandangi hujan di pagi hari. Butiran air membasahi kaca, menciptakan jejak-jejak kecil yang perlahan turun. Di balik kaca terdengar samar lagu Kembali Pulang dari Suara Kayu yang diputar dari handphone-nya, mengisi keheningan ruang tamu. Alunan music yang sendu seolah menyatu dengan suasana hati yang tak pernah benar-benar pulih. Namanya Bianca Trianandita Cartia. Panggil saja Bianca, Bian, atau Tia. Orang-orang sering mengatakan bahwa namanya indah. Betul sih, nama yang indah memiliki arti cahaya yang membawa kebahagiaan dan kekuatan. Tapi pada hari-hari tertentu, Bianca justru merasa seolah menyimpan banyak kesedihan di balik senyumannya. Ia merasa rapuh dan kehilangan kebahagiaannya.</p>
+
+            <p class="chapter-text">Sudah satu tahun sejak ayahnya meninggal, tetapi rasanya seperti baru kemarin. Hari itu terasa sunyi, dan penuh duka. Bianca masih mengingat pagi itu dengan jelas--- langit yang mendung, suasana rumah yang amat sangat dingin, dan secangkir kopi yang ia seduhkan untuk ayahnya masih tergeletak utuh di meja. Hari itu adalah hari terakhir ia memangil "Ayah". Sejak saat itu suasana rumah mereka berubah menjadi tempat yang sepi dan sunyi.</p>
+
+            <p class="chapter-text">Kini, mereka tinggal bertiga dirumah itu—Bianca, Ibunya, dan Sang kakak perempuan, Belinda. Kakaknya, Belinda, berubah menjadi sosok yang sangat sibuk dan selalu tergesa-gesa. Ia menenggelamkan dirinya dalam pekerjaan, mungkin untuk menghindari rasa kehilangan, atau karena itu satu-satunya hal yang bisa ia kendalikan. Hubungan mereka tidak buruk, tetapi juga tidak dekat. Waktu mereka untuk menunjukan kasih sayang satu sama lain menjadi sangat terbatas. Bianca tahu bahwa Kakaknya, Belinda lelah. Mungkin lelah menjadi dewasa terlalu cepat dan mulai memikul beban seberat itu. Tapi tidak ada dari mereka yang benar-benar membicarakan itu.</p>
+
+            <p class="chapter-text">Ibunya---Bu Indah--- menjadi lebih rapuh. Bukan hanya secara fisik, tetapi juga emosional. Sejak kepergian suaminya, kesehatannya menurun drastis. Tekanan darahnya tinggi, vertigo yang kadang datang tiba-tiba, dan magh akut yang kerap membuatnya meringis di tengah malam. Tubuhnya mudah lemas, dan seringkali hanya duduk diam menatap kosong ke luar jendela. Namun setiap melihat Bianca, Beliau tetap tersenyum. Senyum yang dipaksakan, tetapi Bianca tahu ibunya sedang berjuang.</p>
+
+            <p class="chapter-text">Di tengah semuanya, Bianca merasa seperti penopang yang belum siap. Sebagai anak bungsu, banyak yang menggangapnya manja. Namun, sejak kepergian ayahnya, ia memahami bahwa usia bukanlah ukuran kesiapan menghadapi kehidupan. Ia belajar mengurus rumah, menyiapkan obat-obatan untuk ibunya, belanja kebutuhan karena kegemarannya membuat bakery dan pastry di rumah, dan ia mulai mencoba membangun bisnis kecilnya di garasi rumah.</p>
+
+            <p class="chapter-text">Bianca tak pernah membayangkan menjadi pengusaha bakery dan pastry. Tapi siapa sangka, dari hobi sederhananya membuat bakery dan pastry di dapur kecil rumah mereka, lahirlah sebuah jalan untuk bertahan hidup. Ia menamai usahanya "Baked Bliss Bianca". Awalnya, ia hanya menjual beberapa lusin kue per hari melalui platform Instagram. Teman-teman lama, tetangga, hingga kenalan ibu dan kakaknya. Rasanya ajaib melihat sesuatu yang dibuatnya dari dapur kecil itu bisa membuat orang lain tersenyum.</p>
+
+            <p class="chapter-text">Bianca mempunyai dua sahabat – Eliana dan Serenadia. Mereka sudah bersamanya lebih dari sepuluh tahun. Eliana si logis dengan pemikiran strategis, dan Seenadia si ceria penuh dengan kejutan. Mereka tahu Bianca sering menyimpan luka, tapi tidak pernah memaksanya untuk bercerita. Saat Bianca ingin bercerita dan mengeluarkan isi hatinya, mereka selalu ada. Diam-diam, mereka adalah sumber kekuatannya.</p>
+
+            <p class="chapter-text">Bianca sering teringat dengan masa lalunya. Tentang Matteo Theodore. Tentang hubungan yang dulu dianggap cinta, namun justru menjadi luka yang membekas dihatinya. Matteo membuatnya mempertanyakan harga dirinya sendiri. Ia pernah membantunya membayar makan, jalan-jalan, bahkan membantu Matteo melunasi hutangnya. Ia kira itu adalah bentuk rasa cinta dan kasih sayangnya ke Matt, ternyata Bianca hanya dimanfaatkan.</p>
+
+            <p class="chapter-text">Tapi ini bukan tentang Matteo. Ini tentang bagaimana Bianca belajar untuk bangkit dari segala keterpurukan di hidupnya, meski harus jatuh berkali-kali.</p>
+
+            <p class="chapter-text">Ada hari-hari dimana Bianca merasa cukup kuat untuk tertawa, memasak, bahkan bernyanyi kecil sambil menata roti, cookies, dan croissant ke dalam etalase toko mungilnya itu di garasi, lalu mengemas pesanan pelanggan satu per satu dengan hati-hati. Namun ada pula hari dimana ia menangis di kamar mandi, sehabis itu ia membasuh wajahnya dengan air dingin agar tetap terlihat ceria di depan ibunya.</p>
+
+            <p class="chapter-text">Kakaknya semakin jarang pulang, dan hubungannya dengan sang ibu pun semakin renggang. Mereka terkadang berselisih paham, dan Bianca selalu berperan sebagai penengah diantara ibu dan kakaknya. namun kadang ia juga ingin berhenti, ingin bersikap egois, dan tidak memikirkan siapapun. Sayangnya, ia bukan tipe orang yang bisa diam saat orang-orang yang dicintainya terluka.</p>
+
+            <p class="chapter-text">Satu hal yang membuat dirinya tetap waras adalah rutinitas setiap paginya yang selalu ia jalani, bangun jam lima pagi, menyeduhkan teh untuk ibunya, menyiapkan adonan kue, membuka jendela di pagi hari, dan membiarkan sinar matahari masuk ke dalam rumahnya. Ia menyebutnya "ritual kebangkitan" –karena setiap hari, ia harus bangkit dari tempat tidur dengan satu alasan : keluarganya membutuhkannya.</p>
+
+            <p class="chapter-text">Sore itu, setelah mengantar pesanan terakhir Croissant Cheese Pistachio, menu andalan yang selalu jadi best-seller di toko kuenya, ke rumah pelanggan yang berjarak sekitar 1,5 kilometer dari kediamannya. Bianca memutuskan untuk mampir di halte bus dekat taman kecil. Tempat itu selalu menjadi pelariannya. Jauh dari hiruk pikuk jalanan utama, hanya ada riang tawa anak-anak yang bermain ayunan, dan perosotan, serta beberapa lansia yang berjalan santai mengelilingi taman. Bianca suka mengamati mereka; seolah melihat pantulan dunia yang lebih ringan, dunia yang tidak penuh dengan beban pikiran dan masalah kehidupan lainnya.</p>
+
+            <p class="chapter-text">Lalu, Bianca melihatnya.</p>
+
+            <p class="chapter-text">Seorang pria duduk di bangku yang sama, ditemani sebuah buku catatan bersampul cokelat, bukan, ia kira itu buku catatan, ternyata pria itu sedang memegang novel dengan segelas kopi susu yang berada disampingnya, mungkin kopi itu dari kedai "Kopi Sana Senja" di ujung jalan. Penampilannya menunjukkan ia baru saja pulang kerja—kemeja cokelat muda yang sedikit kusut dibagian lengan, dasi yang sudah dilonggarkan, dan celana bahan berwarna gelap. Ia tidak terlalu tampan, juga tidak mencolok. Namun, caranya duduk tegap dan menatap kosong ke arah langit jingga yang perlahan memudar membuat Bianca menghentikan pandangannya. Ada sesuatu yang menarik, entah apa.</p>
+
+            <p class="chapter-text">Mereka tak bertukar kata sore itu. Namun, saat Bianca hendak beranjak, pria itu sempat memberinya senyuman tipis yang hangat. Senyum yang mungkin sepele, sesederhana embusan angin, tapi cukup membuat dada Bianca terasa hangat dan ringan.</p>
+
+            <p class="chapter-text">Malam harinya, di kamarnya yang sederhana, Bianca menulis di jurnal lamanya: "Hari ini, aku beban ku terasa agak ringan dari hari sebelumnya. Seseorang tersenyum padaku, dan untuk pertama kalinya, dunia tidak terasa terlalu gelap. Rasanya seperti ada setitik cahaya di tengah tebalnya kabut."</p>
+
+            <p class="chapter-text">Keesokan harinya, seakan ditarik magnet tak terlihat, Bianca kembali ke halte itu, dan benar saja, pria itu sudah ada disana lagi, kali ini duduk sambil membaca sebuah novel tebal. Bianca memberanikan diri duduk di ujung bangku, menjaga jarak namun dengan harapan kecil dihatinya agar pria itu menyadari kehadirannya.</p>
+
+            <p class="chapter-text">"Cookies?" Tanya pria itu, suaranya lembut, seraya menunjuk ke tas belanja yang dibawa Bianca di mana terlihat sedikit kemasan transparan berisi kue.</p>
+
+            <p class="chapter-text">Bianca menoleh, sedikit terkejut karena diperhatikan. "Iya. Aku bikin sendiri."</p>
+
+            <p class="chapter-text">Pria itu tersenyum, senyum yang menghangatkan hati Bianca seperti mentari pagi. "kelihatannnya enak, kamu jualan?"</p>
+
+            <p class="chapter-text">"iya, jualan online," jawab Bianca singkat, sedikit gugup namun mulai merasa nyaman dengan percapakan ini.</p>
+
+            <p class="chapter-text">"Boleh cobain? atau aku beli satu toples kecil itu, boleh?" Tanya dengan ramah, matanya menatap penuh harap, seolah cookies itu adalah hal terlezat di dunia.</p>
+
+            <p class="chapter-text">"Boleh, Eh, ngga usah dibeli. Gapapa cobain aja," Tanpa ragu, Bianca mengeluarkan satu toples kecil berisi cookies choco chips favoritnya, dan menyerahkannya.</p>
+
+            <p class="chapter-text">Pria itu mengambil satu, menggigitnya perlahan, lalu mengangguk puas. "Enak, enak, manisnya pas, ga berlebihan, aku suka." Pujinya tulus.</p>
+
+            <p class="chapter-text">"Terima kasih," jawab Bianca, senyum tipis terukir di bibirnya.</p>
+
+            <p class="chapter-text">"Niko, namaku Niko," katanya, sambil mengunyah sisa cookies dimulutnya dan mengulurkan tangan yang terasa hangat saat menyentuh jemari Bianca.</p>
+
+            <p class="chapter-text">"Bianca," sahutnya sambil menyambut uluran tangan itu, merasakan getaran halus di ujung jarinya.</p>
+
+            <p class="chapter-text">"Jadi, Bianca, kamu bilang tadi jualan online, ya? Ada toko kuenya atau jualan dirumah? Nama toko kue kamu apa? Aku penasaran, siapa tau aku bisa pesen lain kali." Niko menarik tangannya dari genggaman Bianca, dan kembali mengambil sepotong cookies lagi, "aduh maaf ya aku ambil lagi cookiesnya" ucapnya sedikit canggung, namun jelas menikmati setiap gigitan, sambil mengunyah perlahan.</p>
+
+            <p class="chapter-text">Bianca tertawa kecil, rasa canggungnya perlahan menghilang digantikan kelegaan. "Aku jualan digarasi rumah yang aku renovasi dikit bentuknya seperti toko kue pada umumnya, namanya Baked Bliss Bianca, aku jual roti, cookies, dan beberapa pastry juga disana." Bianca menjelaskan, matanya berbinar saat membicarakan usahanya, "Bisa pesen online, atau datang langsung kesana, bisa sih makan ditempat, Cuma gabisa muat banyak orang, paling cuma 4 sampai 6 orang aja. Dan, ya, kebanyakan orang pesennya online aja."</p>
+
+            <p class="chapter-text">Niko mengangguk-angguk sambil mendengarkan, matanya sesekali melirik cookies di tangannya. "Wah, keren banget! Kamu renovasi sendiri garasinya? Keren sih, aku malah belum pernah kepikiran usaha begitu. Jadi, Baked Bliss Bianca, ya? CATAT." Ia tersenyum, "Pasti sering sibuk banget, ya, ngurusin produksi dan pesenan?"</p>
+
+            <p class="chapter-text">Bianca menghela napas pelan. "Begitulah, kadang sampai lembur sampai tengah malem. Tapi aku suka, sih. Seneng kalau lihat orang-orang suka sama apa yang aku buat. Apalagi kalau ada yang jadi langganan. Kayak menu aku yang Croissant Cheese Pistachio, itu selalu jadi rebutan, kadang udah sold out sebelum jam makan siang."</p>
+
+            <p class="chapter-text">"Aku jadi makin penasaran nih, cookies kamu aja enak, apalagi Croissant Cheese apa tadi?" Ucap Niko berusaha mengingat menu yang Bianca sebutkan tadi.</p>
+
+            <p class="chapter-text">Bianca tertawa kecil, mencoba menambahkan, " Pistachio, Croissant Cheese Pistachio,"</p>
+
+            <p class="chapter-text">"Nah iya, itu! Kapan-kapan aku mampir deh. Kebetulan rumah ku ga terlalu jauh dari sini juga." kata Niko, nada suaranya terdengar antusias, seolah sudah punya rencana "Mungkin setelah pulang kerja, sekalian nyari kopi dan cemilan manis untuk temen membaca novel."</p>
+
+            <p class="chapter-text">Bianca tersenyum senang. "Boleh banget! Aku biasanya buka dari pagi sampai sore. Tapi kalau mau aman, bisa check Instagram dulu, disitu suka ada update kalau lagi libur, ketersediaan stok yang masih ada apa aja."</p>
+
+            <p class="chapter-text">"Nama Instagramnya apa?" Tanya niko.</p>
+
+            <p class="chapter-text">"Follow ya, usernamenya @BakedBlissBian," jawab Bianca, merasa sedikit bangga." Nanti bisa lihat-lihat disana. Aku juga sering update menu baru."</p>
+
+            <p class="chapter-text">"Siap! Aku langsung follow ya," Niko sambil mengeluarkan ponselnya, "Seriusan deh cookies ini enak banget. Kamu ngga kepikiran buat buka toko fisik yang lebih besar, gitu? Aku yakin banget pasti makin laku."</p>
+
+            <p class="chapter-text">Bianca tersenyum tipis. "Pengen banget, sih. Itu salah satu mimpiku. Tapi modalnya ngga sedikit. Jadi sekarang fokus online dulu dan ngembangin reputasi usahaku dulu, sambil nabung pelan-pelan." Ia memandang Niko yang kini sibuk mengetik sesuatu di ponselnya. "Kalau kamu sendiri, habis pulang kerja ya?"</p>
+
+            <p class="chapter-text">Niko menoleh, senyum simpul kembali di wajahnya. "Iya, bener aku baru pulang kerja, fyi aku kerja di bank, ngga jauh dari sini. Suka mampir sebentar disini, apalagi sekarang ditemenin cookies yang enak ini. "ia melirik cookies di tangannya lagi. "Biasanya aku disini cuma baca buku sambil minum segelas kopi susu yang aku beli di ujung sana, nama tempat kopinya Kopi Sana Senja. Kamu sering kesini juga, Bianca?"</p>
+
+            <p class="chapter-text">"Lumayan sering, sih. Kalau udah selesai anter pesenan, kadang mampir kesini sebentar. Lumayan menenangkan pikiran,"jelas Bianca. "Tempatnya juga ngga terlalu ramai, enak buat melamun dan seru aja ngeliat orang-orang main ditaman."</p>
+
+            <p class="chapter-text">Niko mengangguk setuju. "Bener tuh, suasanya tenang, cocok buat melepas penat setelah seharian berkutat sama angka-angka." Ia menatap Bianca lekat, tatapannya dalam dan penuh makna. "Syukurlah kita ketemu hari ini. Jujur, aku penasaran sejak kemarin itu, karena kamu duduk disini juga, tapi sendirian, dan aku lihat kamu seoerti memikirkan banyak hal," Niko menjelaskan, tatapannya melembut."Terus, senyummu kemarin… entah kenapa, membuatku bertanya-tanya. Aku jadi berharap bisa ketemu lagi hari ini." Ia menghela napas,"Dan sepertinya doaku terkabul."</p>
+
+            <p class="chapter-text">Ada sedikit rona di pipi Bianca setelah mendengan pengakuan jujur itu, jantungnya berdebar pelan. "Aku juga." Gumam Bianca, nyaris tak terdengar, namun senyumnya lebar.</p>
+
+            <p class="chapter-text">"Ngomong-ngomong, ini," Niko berkata sambil merogoh saku kemejanya. Ia mengeluarkan kartu nama kecil berwarna biru gelap. "Ini kartu namaku. Kalau sewaktu-waktu butuh apa-apa, atau mau ngobrol lagi, mungkin." Ia menyerahkan kartu itu pada Bianca.</p>
+
+            <p class="chapter-text">Bianca menerimanya. Disana tertulis jelas: Niko Kieran Alif. Nama yang indah, pikirnya, dan terasa pas dengan sosok di depannya. "Oke, terima kasih, Niko."</p>
+
+            <p class="chapter-text">Niko kemudian berdiri."Kayaknya aku harus pergi sekarang deh, Bian." Ia melirik jam tangannya yang menunjukan sudah pukul enam sore, lalu menunujuk ke area parkir di dekat taman. "Motorku sudah menunggu disana." Ia tersenyum, "Terima kasih banyak untuk cookies dan obrolannya hari ini. Aku seneng bisa kenalan sama kamu." Ia tersenyum tulus, senyumnya yang sama persis sepert kemarin. "Bye, sampai ketemu lagi!"</p>
+
+            <p class="chapter-text">Bianca mengangguk, senyumnya tak lekang dari bibir."Sama-sama, Nik. Hati-hati dijalan."</p>
+
+            <p class="chapter-text">Niko melangkah menuju motor vespa berwarna putih yang terparkir rapi beberapa meter dari halte. Ia mengenakan helm full-face berwarna senada, lalu menyalakan mesin motornya. Suara deru mesin yang halusl tak menganggu suasana taman yang tenang. Sesaat sebelum melaju, Niko sempet mengacungkan jempol ke arah Bianca, dan Bianca membalasnya dengan lambaian tangan kecil. Motor itu kemudian menghilang di balik tikungan jalan, meninggalkan Bianca dengan segelas kopi susu yang sudah dingin dan toples cookies yang separuh kosong.</p>
+
+            <p class="chapter-text">Bianca memperhatikan pungungnya menjauh, hatinya merasakan kehangatan. Sebuah perasaan baru yang menyelimutinya, perasaan yang sudah lama sekali tidak ia rasakan. Luka-luka lama seolah mereda, digantikan oleh secercah harapan. Obrolan singkat itu, senyuman itu, dan nama Niko yang kni ia tahu, terasa seperti kehangatan samar yang merayapi hati Bianca.</p>
+
+            <p class="chapter-text">Setelah Niko pergi, Bianca mengambi ponselnya, jemarinya lincah mencari sebuah lagu. Tak lama, alunan melodi lembut memenuhi telinganya, mengalun dari headphone usangnya. Lagu itu adalah lagu nadin amizah – Berpayung Tuhan. Bianca memejamkan mata, membiarkan suaranya meresap, seolah setiap nada menceritakan kembali pahit manis kejadian yang ada di hidupnya.</p>
+
+            <p class="chapter-text">Ia menarik napas dalam, membiarkan alunan music itu meresap ke dalam dirinya, mengusap segala keraguan dan ketakutan. Dalam kesunyian, Bianca selalu percaya, di tengah segala kesulitan dan luka yang pernah ada, hidupnya terus berjalan, dan selalu ada harapan baru di depannya yang jauh lebih bahagia. Ada kekuatan yang menunggunya, sebuah payung yang akan melindunginya dari badai, dan mungkin harapan itu datang dari wujud lain yang tak terduga, disaat ia paling membutuhkannya.</p>
+
+            <p class="chapter-text">Mungkin terdengar berlebihan, tetapi bagi Bianca, ia baru merasakan ketulusan semacam ini dari sebuah obrolan singkat setelah sekian lama. Ada kejujuran dalam setiap kata dan tatapan Niko yang sulit ia temukan pada orang lain sebelumnya. Ini bukan sekedar basa-basi, melainkan interaksi yang terasa murni.</p>
+
+            <p class="chapter-text">Bianca tidak tahu persis seperti apa hari-hari berikutnya akan terbentang. Ia tidak tahu apakah Niko akan kembali ke halte itu, atau apakah perkenalan singkat ini akan berlanjut. Tapi ia tahu satu hal yang pasti: ia sudah terlalu lama terperangkap dalam luka dan kesedihan yang seolah tak berujung. Menjauhkan diri dari dunia luar dan segala kemungkinan baru. Mungkin sudah waktunya ia memberi ruang bagi hal-hal baru, bahkan jika itu hanya secuil harapan yang datang dari seseorang asing yang baru dikenalnya. Sebuah keberanian kecil untuk membuka diri, setelah sekian lama menutup pintu hatinya rapat-rapat karena trauma masa lalu yang masih menghantuinya.</p>
+
+            <p class="chapter-text">Setiap orang pasti pernah terluka, tetapi hidup terus berjalan, dan selalu ada harapan baru di depan yang jauh lebih bahagia.</p>
+
+            <p class="chapter-text">Walau ia belum sepenuhnya sembuh dari luka masa lalu nya, kehadiran Niko, meski singkat, telah memicu percikan kecil dalam dirinya. Percikan yang memberinya kekuatan untuk menatap hari esok dengan sedikit lebih optimis, sedikit lebih ringan, dan mungkin, sedikit lebih berani.</p>
+
+            <p class="chapter-text">Dan dari pertemuan kecil di halte itu, semuanya dimulai. Dari sebuah senyuman, sebungkus cookies buatan tangannya, dan satu nama yang kini terukir jelas di benaknya – Niko Kieran Alif. Mungkin, ini adalah awal dari babak penting dalam hidupnya, Sebuah awal yang sederhana, namun terasa begitu berarti, seperti bunga yang perlahan mekar setelah musim dingin yang panjang. Perlahan, namun pasti, ia akan menemukan jalannya kembali menuju kebahagiaan.</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" disabled>← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(2)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 2 - Template untuk bab selanjutnya -->
+        <div id="chapter-2" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 2 – [Judul Bab 2]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 2 paragraf 1]</p>
+
+            <p class="chapter-text">[Isi cerita bab 2 paragraf 2]</p>
+
+            <p class="chapter-text">[Isi cerita bab 2 paragraf 3]</p>
+
+            <!-- Tambahkan paragraf sesuai kebutuhan -->
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(1)">← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(3)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 3 - Template -->
+        <div id="chapter-3" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 3 – [Judul Bab 3]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 3 paragraf 1]</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(2)">← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(4)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 4 - Template -->
+        <div id="chapter-4" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 4 – [Judul Bab 4]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 4 paragraf 1]</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(3)">← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(5)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 5 - Template -->
+        <div id="chapter-5" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 5 – [Judul Bab 5]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 5 paragraf 1]</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(4)">← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(6)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 6 - Template -->
+        <div id="chapter-6" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 6 – [Judul Bab 6]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 6 paragraf 1]</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(5)">← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(7)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 7 - Template -->
+        <div id="chapter-7" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 7 – [Judul Bab 7]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 7 paragraf 1]</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(6)">← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(8)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 8 - Template -->
+        <div id="chapter-8" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 8 – [Judul Bab 8]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 8 paragraf 1]</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(7)">← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(9)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 9 - Template -->
+        <div id="chapter-9" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 9 – [Judul Bab 9]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 9 paragraf 1]</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(8)">← Sebelumnya</button>
+                <button class="nav-arrow next" onclick="showChapter(10)">Selanjutnya →</button>
+            </div>
+        </div>
+
+        <!-- BAB 10 - Template -->
+        <div id="chapter-10" class="chapter-content hidden">
+            <h2 class="chapter-title">BAB 10 – [Judul Bab 10]</h2>
+            
+            <p class="chapter-text">[Isi cerita bab 10 paragraf 1]</p>
+
+            <div class="navigation-arrows">
+                <button class="nav-arrow prev" onclick="showChapter(9)">← Sebelumnya</button>
+                <button class="nav-arrow next" disabled>Selanjutnya →</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2025 Baked Bliss Bianca Story</p>
+            <p>Sebuah kisah tentang harapan, cinta, dan keberanian untuk memulai lagi</p>
+        </footer>
+    </div>
+
+    <script>
+        function showChapter(chapterNum) {
+            // Sembunyikan semua chapter
+            const chapters = document.querySelectorAll('.chapter-content');
+            chapters.forEach(chapter => {
+                chapter.classList.add('hidden');
+            });
+
+            // Tampilkan chapter yang dipilih
+            const selectedChapter = document.getElementById(`chapter-${chapterNum}`);
+            selectedChapter.classList.remove('hidden');
+
+            // Update tombol aktif
+            const buttons = document.querySelectorAll('.chapter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            buttons[chapterNum - 1].classList.add('active');
+
+            // Scroll ke atas
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
